@@ -86,3 +86,15 @@ It is representative of how I would approach building or scaling a product for a
 - Businesses looking for reliable mobile execution
 
 ---
+
+## Status
+
+Actively maintained and open to extension. Designed as a foundation that can support payments, real-time order tracking, notifications, and analytics.
+
+---
+
+## About the Author
+
+Built by a software engineer focused on delivering production-ready mobile and web products for founders and businesses.
+
+If you are building a startup or scaling an existing product and need execution that goes beyond surface-level code, this is the level of work you can expect.
