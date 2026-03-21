@@ -83,7 +83,10 @@ const toastConfig: ToastConfig = {
 };
 
 export default Sentry.wrap(function RootLayout() {
-  const { isLoading, fetchAuthenticatedUser } = useAuthStore();
+  const isLoading = useAuthStore((state) => state.isLoading);
+  const fetchAuthenticatedUser = useAuthStore(
+    (state) => state.fetchAuthenticatedUser,
+  );
 
   const [fontsLoaded, error] = useFonts({
     "QuickSand-Bold": require("../assets/fonts/Quicksand-Bold.ttf"),
@@ -100,7 +103,7 @@ export default Sentry.wrap(function RootLayout() {
 
   useEffect(() => {
     fetchAuthenticatedUser();
-  }, []);
+  }, [fetchAuthenticatedUser]);
 
   if (!fontsLoaded || isLoading) return null;
 
