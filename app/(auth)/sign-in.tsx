@@ -1,12 +1,72 @@
-import { router } from "expo-router";
-import React from "react";
-import { Button, Text, View } from "react-native";
+import { CustomButton, CustomInput } from "@/components";
+import { signIn } from "@/lib/appwrite";
+import * as Sentry from "@sentry/react-native";
+import { Link, router } from "expo-router";
+import React, { useState } from "react";
+import { Text, View } from "react-native";
+import Toast from "react-native-toast-message";
 
 const SignIn = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [form, setForm] = useState({ email: "", password: "" });
+
+  const submit = async () => {
+    const { email, password } = form;
+
+    if (!email || !password)
+      return Toast.show({
+        type: "error",
+        text1: "Missing fields",
+        text2: "Please enter valid email address & password.",
+      });
+
+    setIsSubmitting(true);
+
+    try {
+      await signIn({ email, password });
+
+      router.replace("/");
+    } catch (error: any) {
+      Toast.show({
+        type: "error",
+        text1: "Sign in failed",
+        text2: error?.message || "Unable to sign in right now.",
+      });
+      Sentry.captureEvent(error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <View>
-      <Text>SignIn</Text>
-      <Button title="Sign Up" onPress={() => router.push("/sign-up")} />
+    <View className="gap-10 p-5 mt-5 bg-white rounded-lg">
+      <CustomInput
+        placeholder="Enter your email"
+        value={form.email}
+        onChangeText={(text) => setForm((prev) => ({ ...prev, email: text }))}
+        label="Email"
+        keyboardType="email-address"
+      />
+      <CustomInput
+        placeholder="Enter your password"
+        value={form.password}
+        onChangeText={(text) =>
+          setForm((prev) => ({ ...prev, password: text }))
+        }
+        label="Password"
+        secureTextEntry={true}
+      />
+
+      <CustomButton title="Sign In" isLoading={isSubmitting} onPress={submit} />
+
+      <View className="flex flex-row justify-center gap-2 mt-5">
+        <Text className="text-gray-100 base-regular">
+          Don&apos;t have an account?
+        </Text>
+        <Link href="/sign-up" className="base-bold text-primary">
+          Sign Up
+        </Link>
+      </View>
     </View>
   );
 };
