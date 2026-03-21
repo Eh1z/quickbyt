@@ -17,7 +17,7 @@ export interface Category extends Models.Document {
 }
 
 export interface User extends Models.Document {
-  userName: string;
+  name: string;
   email: string;
   avatar: string;
   firstName: string;
@@ -96,7 +96,7 @@ interface ProfileFieldProps {
 
 interface CreateUserParams {
   email: string;
-  userName: string;
+  name: string;
   password: string;
 }
 
