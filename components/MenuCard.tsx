@@ -1,4 +1,3 @@
-import { appwriteConfig } from "@/lib/appwrite";
 import { useCartStore } from "@/store";
 import { MenuItem } from "@/type";
 import React from "react";
@@ -9,7 +8,8 @@ const MenuCard = ({
 }: {
   item: MenuItem;
 }) => {
-  const imageUrl = `${image_url}?project=${appwriteConfig.projectId}`;
+  const imageUrl = `${image_url}`;
+  // console.log("MenuCard imageUrl:", imageUrl);
   const { addItem } = useCartStore();
 
   return (
@@ -32,7 +32,7 @@ const MenuCard = ({
       >
         {name}
       </Text>
-      <Text className="mb-4 text-gray-200 body-regular">From ${price}</Text>
+      <Text className="mb-4 text-gray-200 body-regular">From £{price}</Text>
       <TouchableOpacity
         onPress={() =>
           addItem({
