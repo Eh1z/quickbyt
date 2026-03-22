@@ -6,7 +6,7 @@ export interface MenuItem extends Models.Document {
   image_url: string;
   description: string;
   calories: number;
-  protein: number;
+  proteins: number;
   rating: number;
   type: string;
 }

@@ -69,7 +69,7 @@ export default function Index() {
               </Text>
               <TouchableOpacity className="flex-row flex-center gap-x-1 mt-0.5">
                 <Text className="uppercase paragraph-bold text-dark-100">
-                  Shinjuku
+                  42 Chiltern St, Marylebone
                 </Text>
                 <Image
                   source={images.arrowDown}
