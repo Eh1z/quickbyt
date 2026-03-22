@@ -7,7 +7,7 @@ import Toast, {
   ToastConfig,
 } from "react-native-toast-message";
 
-import useAuthStore from "@/lib/auth.store";
+import { useAuthStore } from "@/store";
 import * as Sentry from "@sentry/react-native";
 import "../global.css";
 

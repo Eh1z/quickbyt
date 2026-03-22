@@ -1,5 +1,5 @@
 import { images } from "@/constants";
-import useAuthStore from "@/lib/auth.store";
+import { useAuthStore } from "@/store";
 import { Redirect, Slot } from "expo-router";
 import React from "react";
 import {
