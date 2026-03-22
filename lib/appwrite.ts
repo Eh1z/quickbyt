@@ -45,7 +45,6 @@ export const createUser = async ({
     if (newAccount) {
       await signIn({ email, password });
       const avatarUrl = avatars.getInitialsURL(name);
-      console.log("Avatar URL:", avatarUrl);
 
       return await databases.createDocument({
         databaseId: appwriteConfig.databaseId,
@@ -91,7 +90,15 @@ export const getCurrentUser = async () => {
 
     return currentUser.documents[0];
   } catch (e) {
-    console.log(e);
-    throw new Error(e as string);
+    // Guests (no active session) are expected during cold starts.
+    const appwriteError = e as { code?: number; message?: string };
+    const isUnauthenticated =
+      appwriteError?.code === 401 ||
+      appwriteError?.message?.includes("missing scopes") ||
+      appwriteError?.message?.includes("role: guests");
+
+    if (isUnauthenticated) return null;
+
+    throw new Error(String(e));
   }
 };
