@@ -1,4 +1,4 @@
-import useAuthStore from "@/lib/auth.store";
+import { useAuthStore } from "@/store";
 import { Redirect, router } from "expo-router";
 import React from "react";
 import { Button, Text } from "react-native";

@@ -1,4 +1,4 @@
-import { CreateUserParams, SignInParams } from "@/type";
+import { CreateUserParams, GetMenuParams, SignInParams } from "@/type";
 import {
   Account,
   Avatars,
@@ -110,5 +110,47 @@ export const getCurrentUser = async () => {
     if (isUnauthenticated) return null;
 
     throw new Error(String(e));
+  }
+};
+
+export const getMenu = async ({ category, query }: GetMenuParams) => {
+  try {
+    const queries: string[] = [];
+    if (category) queries.push(Query.equal("categories", category));
+    if (query) queries.push(Query.search("name", query));
+
+    // Defensive: ensure collectionId is present and not undefined
+    if (!appwriteConfig.menuCollectionId) {
+      throw new Error("Missing menuCollectionId in appwriteConfig");
+    }
+
+    const menus = await databases.listDocuments({
+      databaseId: appwriteConfig.databaseId,
+      collectionId: appwriteConfig.menuCollectionId,
+      queries: queries,
+    });
+
+    return menus.documents;
+  } catch (e) {
+    console.error("Failed to fetch menu items:", e);
+    throw new Error(e as string);
+  }
+};
+
+export const getCategories = async () => {
+  try {
+    // Defensive: ensure collectionId is present and not undefined
+    if (!appwriteConfig.categoriesCollectionId) {
+      throw new Error("Missing categoriesCollectionId in appwriteConfig");
+    }
+    const categories = await databases.listDocuments({
+      databaseId: appwriteConfig.databaseId,
+      collectionId: appwriteConfig.categoriesCollectionId,
+    });
+
+    return categories.documents;
+  } catch (e) {
+    console.error("Failed to fetch categories:", e);
+    throw new Error(e as string);
   }
 };
