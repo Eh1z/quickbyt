@@ -1,4 +1,9 @@
-import { CreateUserParams, GetMenuParams, SignInParams } from "@/type";
+import {
+  CreateUserParams,
+  GetMenuParams,
+  SignInParams,
+  UpdateUserProfileParams,
+} from "@/type";
 import {
   Account,
   Avatars,
@@ -8,6 +13,31 @@ import {
   Query,
   Storage,
 } from "react-native-appwrite";
+// Update user profile in Appwrite
+export const updateUserProfile = async (params: UpdateUserProfileParams) => {
+  try {
+    // Defensive: get current user document
+    const currentAccount = await account.get();
+    if (!currentAccount) throw new Error("No authenticated user");
+    const userDocs = await databases.listDocuments({
+      databaseId: appwriteConfig.databaseId,
+      collectionId: appwriteConfig.userCollectionId,
+      queries: [Query.equal("accountId", currentAccount.$id)],
+    });
+    if (!userDocs.documents.length) throw new Error("User document not found");
+    const userDoc = userDocs.documents[0];
+    // Update document
+    const updated = await databases.updateDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      userDoc.$id,
+      params,
+    );
+    return updated;
+  } catch (error: any) {
+    throw new Error(error?.message || "Failed to update profile");
+  }
+};
 
 export const appwriteConfig = {
   endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT!,
@@ -153,4 +183,8 @@ export const getCategories = async () => {
     console.error("Failed to fetch categories:", e);
     throw new Error(e as string);
   }
+};
+
+export const logout = async () => {
+  await account.deleteSession("current");
 };
