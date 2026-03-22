@@ -77,6 +77,8 @@ interface CustomButtonProps {
 
 interface CustomHeaderProps {
   title?: string;
+  className?: string;
+  icon?: React.ReactNode;
 }
 
 interface CustomInputProps {
