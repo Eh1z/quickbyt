@@ -25,7 +25,7 @@ const SignIn = () => {
     try {
       await signIn({ email, password });
 
-      router.replace("/");
+      router.push("/(tabs)");
     } catch (error: any) {
       Toast.show({
         type: "error",

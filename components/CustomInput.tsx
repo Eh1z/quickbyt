@@ -11,6 +11,7 @@ const CustomInput = ({
   label,
   secureTextEntry = false,
   keyboardType = "default",
+  className,
 }: CustomInputProps) => {
   const [isFocused, setIsFocused] = React.useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
@@ -19,7 +20,7 @@ const CustomInput = ({
   const isSecureInput = secureTextEntry && !isPasswordVisible;
 
   return (
-    <View className="w-full mb-5">
+    <View className={cn("w-full", className)}>
       <Text className="label">{label}</Text>
       <TextInput
         placeholder={placeholder}

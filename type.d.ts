@@ -1,3 +1,16 @@
+// Params for updating user profile
+export interface UpdateUserProfileParams {
+  name: string;
+  email: string;
+  phoneNumber?: string;
+  address1?: string;
+  address2?: string;
+}
+
+// Function signature for updating user profile
+export type UpdateUserProfileFn = (
+  params: UpdateUserProfileParams,
+) => Promise<User>;
 import { Models } from "react-native-appwrite";
 
 export interface MenuItem extends Models.Document {
@@ -24,6 +37,8 @@ export interface User extends Models.Document {
   lastName: string;
   phoneNumber: string;
   dateOfBirth: Date;
+  address1: string;
+  address2: string;
 }
 
 export interface CartCustomization {
@@ -87,6 +102,7 @@ interface CustomInputProps {
   onChangeText?: (text: string) => void;
   label: string;
   secureTextEntry?: boolean;
+  className?: string;
   keyboardType?: "default" | "email-address" | "numeric" | "phone-pad";
 }
 
