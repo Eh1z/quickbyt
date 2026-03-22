@@ -17,44 +17,44 @@
 }
 
 @layer components {
-  .cartBtn {
-    @apply flex items-center justify-center size-10 rounded-full bg-dark-100;
+  .cart-btn {
+    @apply flex items-center justify-center rounded-full size-10 bg-dark-100;
   }
 
   .cart-badge {
-    @apply absolute -top-2 -right-1 flex items-center justify-center size-5 bg-primary rounded-full;
+    @apply absolute flex items-center justify-center rounded-full -top-2 -right-1 size-5 bg-primary;
   }
 
   .cart-item {
-    @apply flex flex-row items-end justify-between mb-4 bg-white rounded-xl p-3 shadow-md shadow-dark-100/10;
+    @apply flex flex-row items-end justify-between p-3 mb-4 bg-white shadow-md rounded-xl shadow-dark-100/10;
   }
 
   .cart-item__image {
-    @apply size-24 bg-primary/10 rounded-lg flex items-center justify-center;
+    @apply flex items-center justify-center rounded-lg size-24 bg-primary/10;
   }
 
   .cart-item__actions {
-    @apply flex flex-row items-center justify-center size-5 bg-primary/10 rounded-md;
+    @apply flex flex-row items-center justify-center rounded-md size-5 bg-primary/10;
   }
 
   .custom-btn {
-    @apply bg-primary rounded-full p-3 w-full flex flex-row justify-center;
+    @apply flex flex-row justify-center w-full p-3 rounded-full bg-primary;
   }
 
   .custom-header {
-    @apply w-full flex flex-row items-center justify-between mb-10;
+    @apply flex flex-row items-center justify-between w-full mb-10;
   }
 
   .label {
-    @apply text-lg text-start w-full font-quicksand-medium text-gray-500 pl-2;
+    @apply w-full pl-2 text-lg text-gray-500 text-start font-quicksand-medium;
   }
 
   .input {
-    @apply rounded-lg p-5 w-full text-base font-quicksand-semibold text-dark-100 border-b leading-5;
+    @apply w-full p-5 text-base leading-5 border-b rounded-lg font-quicksand-semibold text-dark-100;
   }
 
   .filter {
-    @apply px-6 py-3 rounded-full mr-2 shadow-sm shadow-black/10;
+    @apply px-6 py-3 mr-2 rounded-full shadow-sm shadow-black/10;
   }
 
   .menu-card {
@@ -66,31 +66,31 @@
   }
 
   .profile-field__icon {
-    @apply size-12 rounded-full bg-primary/10 flex items-center justify-center mr-3;
+    @apply flex items-center justify-center mr-3 rounded-full size-12 bg-primary/10;
   }
 
   .searchbar {
-    @apply relative flex flex-row items-center justify-center w-full bg-white shadow-md shadow-black/10 rounded-full  font-quicksand-medium text-dark-100 gap-5;
+    @apply relative flex flex-row items-center justify-center w-full gap-5 bg-white rounded-full shadow-md shadow-black/10 font-quicksand-medium text-dark-100;
   }
 
   .tab-icon {
-    @apply flex min-w-20 items-center justify-center min-h-full gap-1 mt-12;
+    @apply flex items-center justify-center min-h-full gap-1 mt-12 min-w-20;
   }
 
   .offer-card {
-    @apply w-full h-40 my-2 rounded-xl overflow-hidden shadow-lg flex items-center gap-5;
+    @apply flex items-center w-full h-48 gap-5 my-2 overflow-hidden shadow-lg rounded-xl;
   }
 
   .offer-card__info {
-    @apply flex-1 h-full flex flex-col justify-center items-start gap-4;
+    @apply flex flex-col items-start justify-center flex-1 h-full gap-4;
   }
 
   .profile-avatar {
-    @apply relative size-28 border-white border-2 rounded-full;
+    @apply relative border-2 border-white rounded-full size-28;
   }
 
   .profile-edit {
-    @apply flex items-center justify-center absolute bottom-2 right-0 bg-primary border-2 border-white size-7 p-2 rounded-full;
+    @apply absolute right-0 flex items-center justify-center p-2 border-2 border-white rounded-full bottom-2 bg-primary size-7;
   }
 
   .h1-bold {
