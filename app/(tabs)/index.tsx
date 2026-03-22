@@ -1,4 +1,5 @@
-import { offers } from "@/constants";
+import { CartButton } from "@/components";
+import { images, offers } from "@/constants";
 import cn from "clsx";
 import React from "react";
 import {
@@ -10,8 +11,6 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { CartButton } from "../../components";
-import { images } from "../../constants";
 
 export default function Index() {
   return (
@@ -46,7 +45,7 @@ export default function Index() {
                         isEven ? "pl-10 " : "pl-10",
                       )}
                     >
-                      <Text className="h1-bold text-white leading-tight">
+                      <Text className="leading-tight text-white h1-bold">
                         {item.title}
                       </Text>
                       <Image
@@ -63,13 +62,13 @@ export default function Index() {
           );
         }}
         ListHeaderComponent={() => (
-          <View className="flex-between flex-row w-full my-4 ">
+          <View className="flex-row w-full my-4 flex-between ">
             <View className="flex-start">
-              <Text className="small-bold text-primary text-center mt-5 uppercase">
+              <Text className="mt-5 text-center uppercase small-bold text-primary">
                 Deliver To
               </Text>
               <TouchableOpacity className="flex-row flex-center gap-x-1 mt-0.5">
-                <Text className="paragraph-bold text-dark-100 uppercase">
+                <Text className="uppercase paragraph-bold text-dark-100">
                   Shinjuku
                 </Text>
                 <Image
