@@ -43,8 +43,14 @@ const toastConfig: ToastConfig = {
         borderRadius: 14,
         backgroundColor: "#F0FDFA",
         minHeight: 68,
+        height: "auto",
       }}
-      contentContainerStyle={{ paddingHorizontal: 12 }}
+      contentContainerStyle={{
+        paddingHorizontal: 12,
+        paddingVertical: 10,
+      }}
+      text1NumberOfLines={2}
+      text2NumberOfLines={12}
       text1Style={{
         fontSize: 14,
         fontFamily: "QuickSand-SemiBold",
@@ -52,6 +58,7 @@ const toastConfig: ToastConfig = {
       }}
       text2Style={{
         fontSize: 13,
+        lineHeight: 18,
         fontFamily: "QuickSand-Medium",
         color: "#334155",
       }}
@@ -66,8 +73,14 @@ const toastConfig: ToastConfig = {
         borderRadius: 14,
         backgroundColor: "#FEF2F2",
         minHeight: 68,
+        height: "auto",
       }}
-      contentContainerStyle={{ paddingHorizontal: 12 }}
+      contentContainerStyle={{
+        paddingHorizontal: 12,
+        paddingVertical: 10,
+      }}
+      text1NumberOfLines={2}
+      text2NumberOfLines={12}
       text1Style={{
         fontSize: 14,
         fontFamily: "QuickSand-SemiBold",
@@ -75,6 +88,7 @@ const toastConfig: ToastConfig = {
       }}
       text2Style={{
         fontSize: 13,
+        lineHeight: 18,
         fontFamily: "QuickSand-Medium",
         color: "#991B1B",
       }}
